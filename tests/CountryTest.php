@@ -52,7 +52,6 @@ it('can map element keys with options', function () {
     expect($options)->toBe(['CN' => 'Canada', 'US' => 'United States']);
 });
 
-
 it('can map element keys with options as an array', function () {
     CountriesFacade::shouldReceive('lookup')->andReturn(['CA' => 'Canada', 'US' => 'United States']);
 
@@ -64,7 +63,7 @@ it('can map element keys with options as an array', function () {
     expect($options)->toBe(['CN' => 'Canada', 'UN' => 'United States']);
 });
 
-it('returns options sorted by keys by default', function() {
+it('returns options sorted by keys by default', function () {
     CountriesFacade::shouldReceive('lookup')->andReturn(['US' => 'United States', 'CA' => 'Canada', 'BE' => 'Belgium']);
 
     $countryField = new Country('country');
@@ -73,7 +72,7 @@ it('returns options sorted by keys by default', function() {
     expect($options)->toBe(['BE' => 'Belgium', 'CA' => 'Canada', 'US' => 'United States']);
 });
 
-it('returns options after exclude, add and map elements', function() {
+it('returns options after exclude, add and map elements', function () {
     CountriesFacade::shouldReceive('lookup')->andReturn(['US' => 'United States', 'CA' => 'Canada', 'BE' => 'Belgium']);
 
     $countryField = new Country('country');
@@ -86,8 +85,8 @@ it('returns options after exclude, add and map elements', function() {
     expect($options)->toBe(['BN' => 'Belgium', 'MA' => 'Mars', 'US' => 'United States']);
 });
 
-it('ignores empty keys when map is called', function() {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['US' =>'United States', 'CA' =>'Canada']);
+it('ignores empty keys when map is called', function () {
+    CountriesFacade::shouldReceive('lookup')->andReturn(['US' => 'United States', 'CA' => 'Canada']);
 
     $countryField = new Country('country');
     $countryField->map(['' => 'CN']);
