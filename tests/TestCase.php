@@ -42,23 +42,15 @@ class TestCase extends Orchestra
             FormsServiceProvider::class,
             InfolistsServiceProvider::class,
             LivewireServiceProvider::class,
-            NotificationsServiceProvider::class,
-            SpatieLaravelSettingsPluginServiceProvider::class,
-            SpatieLaravelTranslatablePluginServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
-            WidgetsServiceProvider::class,
             FilamentCountryFieldServiceProvider::class,
+            \PeterColes\Countries\CountriesServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_filament-country-field_table.php.stub';
-        $migration->up();
-        */
     }
 }
