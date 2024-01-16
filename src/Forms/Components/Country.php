@@ -1,6 +1,6 @@
 <?php
 
-namespace Parfaitementweb\FilamentCountryField;
+namespace Parfaitementweb\FilamentCountryField\Forms\Components;
 
 use Closure;
 use Filament\Forms\Components\Select;
@@ -48,7 +48,7 @@ class Country extends Select
     {
         $locale = app()->getLocale();
 
-        return require __DIR__ . '/data/' . $locale . '/country.php';
+        return require __DIR__ . '/../../data/' . $locale . '/country.php';
     }
 
     public function map(array | Closure | string | Arrayable | null $mapped = null): static

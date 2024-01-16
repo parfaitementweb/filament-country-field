@@ -26,7 +26,7 @@ composer require parfaitementweb/filament-country-field
 2. **Add the Country field in your Filament Resource.**
 
 ```php
-use Parfaitementweb\FilamentCountryField\Country;
+use Parfaitementweb\FilamentCountryField\Forms\Components\Country;
 
 Country::make('country')
 ```
@@ -42,7 +42,7 @@ On top of all **[Select Field](https://filamentphp.com/docs/3.x/forms/fields/sel
 - `map()` changes one key to another, such as `GB` to `UK`.
 
 ```php
-use Parfaitementweb\FilamentCountryField\Country;
+use Parfaitementweb\FilamentCountryField\Forms\Components\Country;
 
 Country::make('country')
 ->exclude(['NL'])
