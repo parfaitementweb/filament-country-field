@@ -38,7 +38,7 @@ class Country extends Select
             })
             ->merge($this->getAdd())
             ->reject(function ($country, $key) {
-                return in_array($key, $this->getExclude() ?? []);
+                return in_array($key, $this->getExclude());
             })
             ->sort()
             ->toArray();
