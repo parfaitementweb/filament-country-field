@@ -1,110 +1,169 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
+use Mockery\MockInterface;
 use Parfaitementweb\FilamentCountryField\Country;
-use PeterColes\Countries\CountriesFacade;
 
 it('returns the country list by default', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    });
 
-    $countryField = new Country('country');
-    $options = $countryField->getOptions();
+    $options = $mock->getOptions();
 
     expect($options)->toBe(['CA' => 'Canada', 'US' => 'United States']);
 });
 
 it('returns the options list if set', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['CA' => 'Canada', 'US' => 'United States']);
-
     $countryField = (new Country('country'))->options(['foo' => 'bar']);
-    $options = $countryField->getOptions();
+    $options = $countryField
+        ->getOptions();
 
     expect($options)->toBe(['foo' => 'bar']);
 });
 
 it('can add element with options', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    });
 
-    $countryField = new Country('country');
-    $countryField->add(['MA' => 'Mars']);
-    $options = $countryField->getOptions();
+    $options = $mock->add(['MA' => 'Mars'])
+        ->getOptions();
 
     expect($options)->toBe(['CA' => 'Canada', 'MA' => 'Mars', 'US' => 'United States']);
 });
 
 it('can exclude element with options', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    });
 
-    $countryField = new Country('country');
-    $countryField->exclude(['CA']);
+    $options = $mock->exclude(['CA'])
+        ->getOptions();
 
-    $options = $countryField->getOptions();
     expect($options)->toBe(['US' => 'United States']);
 });
 
 it('can map element keys with options', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    });
 
-    $countryField = new Country('country');
-    $countryField->map(['CA' => 'CN']);
-
-    $options = $countryField->getOptions();
+    $options = $mock->map(['CA' => 'CN'])
+        ->getOptions();
 
     expect($options)->toBe(['CN' => 'Canada', 'US' => 'United States']);
 });
 
 it('can map element keys with options as an array', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
+    });
 
-    $countryField = new Country('country');
-    $countryField->map(['CA' => 'CN', 'US' => 'UN']);
-
-    $options = $countryField->getOptions();
+    $options = $mock->map(['CA' => 'CN', 'US' => 'UN'])
+        ->getOptions();
 
     expect($options)->toBe(['CN' => 'Canada', 'UN' => 'United States']);
 });
 
 it('returns options sorted by keys by default', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['US' => 'United States', 'CA' => 'Canada', 'BE' => 'Belgium']);
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['US' => 'United States', 'CA' => 'Canada', 'BE' => 'Belgium']);
+    });
 
-    $countryField = new Country('country');
-    $options = $countryField->getOptions();
+    $options = $mock->getOptions();
 
     expect($options)->toBe(['BE' => 'Belgium', 'CA' => 'Canada', 'US' => 'United States']);
 });
 
 it('returns options after exclude, add and map elements', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['US' => 'United States', 'CA' => 'Canada', 'BE' => 'Belgium']);
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['US' => 'United States', 'CA' => 'Canada', 'BE' => 'Belgium']);
+    });
 
-    $countryField = new Country('country');
-    $countryField->exclude(['CA'])
+    $options = $mock->exclude(['CA'])
         ->add(['MA' => 'Mars'])
-        ->map(['BE' => 'BN']);
-
-    $options = $countryField->getOptions();
+        ->map(['BE' => 'BN'])
+        ->getOptions();
 
     expect($options)->toBe(['BN' => 'Belgium', 'MA' => 'Mars', 'US' => 'United States']);
 });
 
 it('ignores empty keys when map is called', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['US' => 'United States', 'CA' => 'Canada']);
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['US' => 'United States', 'CA' => 'Canada']);
+    });
 
-    $countryField = new Country('country');
-    $countryField->map(['' => 'CN']);
-
-    $options = $countryField->getOptions();
+    $options = $mock->map(['' => 'CN'])
+        ->getOptions();
 
     expect($options)->toBe(['CA' => 'Canada', 'US' => 'United States']);
 });
 
 it('returns default options when methods are called with empty array', function () {
-    CountriesFacade::shouldReceive('lookup')->andReturn(['US' => 'United States', 'CA' => 'Canada']);
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['US' => 'United States', 'CA' => 'Canada']);
+    });
 
-    $countryField = new Country('country');
-    $countryField->exclude([])
+    $options = $mock->exclude([])
         ->add([])
-        ->map([]);
-
-    $options = $countryField->getOptions();
+        ->map([])
+        ->getOptions();
 
     expect($options)->toBe(['CA' => 'Canada', 'US' => 'United States']);
+});
+
+it('gets the data from the correct file in English', function () {
+    App::setLocale('en');
+    $data = (new Country('country'))
+        ->getList();
+
+    expect($data)->toBe(require __DIR__ . '/../src/data/en/country.php');
+});
+
+it('gets the data from the correct file in French', function () {
+    App::setLocale('fr');
+    $data = (new Country('country'))
+        ->getList();
+
+    expect($data)->toBe(require __DIR__ . '/../src/data/fr/country.php');
+});
+
+it('caches the countries', function () {
+    App::setLocale('en');
+    $countryField = (new Country('country'))
+        ->getOptions();
+
+    expect(Cache::get('filament-countries-field.en'))->toBe(require __DIR__ . '/../src/data/en/country.php');
+});
+
+it('clears the countries cache', function () {
+    App::setLocale('en');
+    $countryField = (new Country('country'))
+        ->getOptions();
+
+    expect(Cache::get('filament-countries-field.en'))->toBe(require __DIR__ . '/../src/data/en/country.php');
+
+    Artisan::call('countries-field:clear');
+
+    expect(Cache::get('filament-countries-field.en'))->toBeNull();
 });

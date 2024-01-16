@@ -23,7 +23,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Parfaitementweb\\FilamentCountryField\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Parfaitementweb\\Country\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
@@ -41,7 +41,6 @@ class TestCase extends Orchestra
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             FilamentCountryFieldServiceProvider::class,
-            \PeterColes\Countries\CountriesServiceProvider::class,
         ];
     }
 
