@@ -11,14 +11,14 @@ The simplest way to list every country as a selectable dropdown 🤘
 ## Features
 - Display a select field with **every ISO 639-1 language**. _tl;dr: The two-letter code._
 - Built-in **localization** in **132** languages.
-- Supports all the native **Select Filament Field** [features](https://filamentphp.com/docs/3.x/forms/fields/select).
+- Supports all the native **[Select Field](https://filamentphp.com/docs/3.x/forms/fields/select)** features.
 
 
 ## Getting Started
 
 We have made things easy for you start. Here is the three steps your need to follow:
 
-1. **Install the addon**  
+1. **Install the package**  
 ```bash
 composer require parfaitementweb/filament-country-field
 ```
@@ -35,7 +35,7 @@ Country::make('country')
 
 ## Configuration
 
-On top of all **Select Filament Field** [features](https://filamentphp.com/docs/3.x/forms/fields/select) methods, you can use these three helpers:
+On top of all **[Select Field](https://filamentphp.com/docs/3.x/forms/fields/select)** methods, you can use these three helpers:
 
 - `exclude()` removes an item from the list.
 - `add()` adds your own value to the list.
@@ -60,10 +60,6 @@ To clear the cached country list, you can utilize the built-in artisan command p
 ```bash
 php artisan countries-field:clear
 ```
-
-## Conclusion
-
-Caching is a crucial aspect of our application to improve performance. However, it is important to manage your cache and clear it when necessary to maintain the accuracy and freshness of the data presented to the users. Be sure to utilize the appropriate Laravel artisan commands to manage your application's cache effectively.
 
 ## Built-in translations
 The country values are displayed according to the user's current locale settings, which are determined by the App::getLocale() value.
