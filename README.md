@@ -1,4 +1,4 @@
-# Filament Country (ISO 639-1) Dropdown Fieldtype
+# Filament Country (ISO 639-1) Field
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/parfaitementweb/filament-country-field.svg?style=flat-square)](https://packagist.org/packages/parfaitementweb/filament-country-field)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/parfaitementweb/filament-country-field/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/parfaitementweb/filament-country-field/actions?query=workflow%3Arun-tests+branch%3Amain)
