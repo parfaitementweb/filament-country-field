@@ -12,7 +12,8 @@ it('returns the country list by default', function () {
             ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
     });
 
-    $options = $mock->getOptions();
+    $options = $mock
+        ->getOptions();
 
     expect($options)->toBe(['CA' => 'Canada', 'US' => 'United States']);
 });
@@ -32,7 +33,8 @@ it('can add element with options', function () {
             ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
     });
 
-    $options = $mock->add(['MA' => 'Mars'])
+    $options = $mock
+        ->add(['MA' => 'Mars'])
         ->getOptions();
 
     expect($options)->toBe(['CA' => 'Canada', 'MA' => 'Mars', 'US' => 'United States']);
@@ -45,7 +47,8 @@ it('can exclude element with options', function () {
             ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
     });
 
-    $options = $mock->exclude(['CA'])
+    $options = $mock
+        ->exclude(['CA'])
         ->getOptions();
 
     expect($options)->toBe(['US' => 'United States']);
@@ -58,7 +61,8 @@ it('can map element keys with options', function () {
             ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
     });
 
-    $options = $mock->map(['CA' => 'CN'])
+    $options = $mock
+        ->map(['CA' => 'CN'])
         ->getOptions();
 
     expect($options)->toBe(['CN' => 'Canada', 'US' => 'United States']);
@@ -71,7 +75,8 @@ it('can map element keys with options as an array', function () {
             ->andReturn(['CA' => 'Canada', 'US' => 'United States']);
     });
 
-    $options = $mock->map(['CA' => 'CN', 'US' => 'UN'])
+    $options = $mock
+        ->map(['CA' => 'CN', 'US' => 'UN'])
         ->getOptions();
 
     expect($options)->toBe(['CN' => 'Canada', 'UN' => 'United States']);
@@ -84,7 +89,8 @@ it('returns options sorted by keys by default', function () {
             ->andReturn(['US' => 'United States', 'CA' => 'Canada', 'BE' => 'Belgium']);
     });
 
-    $options = $mock->getOptions();
+    $options = $mock
+        ->getOptions();
 
     expect($options)->toBe(['BE' => 'Belgium', 'CA' => 'Canada', 'US' => 'United States']);
 });
@@ -96,7 +102,8 @@ it('returns options after exclude, add and map elements', function () {
             ->andReturn(['US' => 'United States', 'CA' => 'Canada', 'BE' => 'Belgium']);
     });
 
-    $options = $mock->exclude(['CA'])
+    $options = $mock
+        ->exclude(['CA'])
         ->add(['MA' => 'Mars'])
         ->map(['BE' => 'BN'])
         ->getOptions();
@@ -111,7 +118,8 @@ it('ignores empty keys when map is called', function () {
             ->andReturn(['US' => 'United States', 'CA' => 'Canada']);
     });
 
-    $options = $mock->map(['' => 'CN'])
+    $options = $mock
+        ->map(['' => 'CN'])
         ->getOptions();
 
     expect($options)->toBe(['CA' => 'Canada', 'US' => 'United States']);
@@ -124,7 +132,8 @@ it('returns default options when methods are called with empty array', function 
             ->andReturn(['US' => 'United States', 'CA' => 'Canada']);
     });
 
-    $options = $mock->exclude([])
+    $options = $mock
+        ->exclude([])
         ->add([])
         ->map([])
         ->getOptions();
