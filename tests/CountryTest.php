@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Mockery\MockInterface;
-use Parfaitementweb\FilamentCountryField\Country;
+use Parfaitementweb\FilamentCountryField\Forms\Components\Country;
 
 it('returns the country list by default', function () {
     $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
