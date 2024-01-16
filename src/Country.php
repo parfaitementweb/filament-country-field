@@ -5,7 +5,7 @@ namespace Parfaitementweb\FilamentCountryField;
 use Closure;
 use Filament\Forms\Components\Select;
 use Illuminate\Contracts\Support\Arrayable;
-use PeterColes\Countries\CountriesFacade;
+use Illuminate\Support\Facades\Cache;
 
 class Country extends Select
 {
@@ -23,7 +23,10 @@ class Country extends Select
             return $options;
         }
 
-        return collect(CountriesFacade::lookup(app()->getLocale()))
+        $locale = app()->getLocale();
+        $countries = Cache::rememberForever('filament-countries-field.' . $locale, fn () => $this->getList());
+
+        return collect($countries)
             ->when($this->mapped, function ($options) {
                 return $options->mapWithKeys(function ($country, $key) {
                     if (in_array($key, array_keys($this->mapped))) {
@@ -39,6 +42,13 @@ class Country extends Select
             })
             ->sort()
             ->toArray();
+    }
+
+    public function getList(): array
+    {
+        $locale = app()->getLocale();
+
+        return require __DIR__ . '/data/' . $locale . '/country.php';
     }
 
     public function map(array | Closure | string | Arrayable | null $mapped = null): static

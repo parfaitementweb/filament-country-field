@@ -9,7 +9,7 @@ The simplest way to list every country as a selectable dropdown 🤘
 
 ## Features
 - Display a select field with **every ISO 639-1 language**. _tl;dr: The two-letter code._
-- Built-in **localization** in **70+** languages.
+- Built-in **localization** in **132** languages.
 - Supports all the native **Select Filament Field** [features](https://filamentphp.com/docs/3.x/forms/fields/select).
 
 
@@ -23,6 +23,7 @@ composer require parfaitementweb/filament-country-field
 ```
 
 2. **Add the Country field in your Filament Resource.**
+
 ```php
 use Parfaitementweb\FilamentCountryField\Country;
 
@@ -48,6 +49,20 @@ Country::make('country')
 ->map(['GB' => 'UK', 'GF' => 'FR'])
 
 ```
+
+## Clearing the Cache
+
+To ensure better performance and faster response times, the country list is stored in the cache for easy retrieval, leading to an overall snappier user experience.
+
+To clear the cached country list, you can utilize the built-in artisan command provided by Laravel. The following command can be run in your terminal or command line interface:
+
+```bash
+php artisan countries-field:clear
+```
+
+## Conclusion
+
+Caching is a crucial aspect of our application to improve performance. However, it is important to manage your cache and clear it when necessary to maintain the accuracy and freshness of the data presented to the users. Be sure to utilize the appropriate Laravel artisan commands to manage your application's cache effectively.
 
 ## Built-in translations
 The country values are displayed according to the user's current locale settings, which are determined by the App::getLocale() value.
@@ -77,9 +92,10 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-This package uses https://github.com/petercoles/Multilingual-Country-List by https://github.com/petercoles. Thank you for the great work.
+This package used data from [umpirsky/country-list](https://github.com/umpirsky/country-list). Thank you for the great work.
 
 - [Alexis](https://github.com/AlexisSerneels)
+- [Saša Stamenković](https://github.com/umpirsky)
 - [All Contributors](../../contributors)
 
 ## License
