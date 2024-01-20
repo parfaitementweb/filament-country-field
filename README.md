@@ -13,6 +13,8 @@ The simplest way to list every country as a selectable dropdown 🤘
 - Built-in **localization** in **132** languages.
 - Supports all the native **[Select Field](https://filamentphp.com/docs/3.x/forms/fields/select)** features.
 
+## Screenshot
+![filament-country-field](https://github.com/parfaitementweb/filament-country-field/assets/287688/ba6e568c-3244-4338-a6ca-89fce52a5f06)
 
 ## Getting Started
 
