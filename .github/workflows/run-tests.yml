@@ -22,7 +22,7 @@ jobs:
             carbon: 2.*
           - laravel: 11.*
             testbench: ^9.0
-            carbon: 2.*
+            carbon: 3.*
         exclude:
           - php: 8.1
             laravel: 11.*
