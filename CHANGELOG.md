@@ -2,6 +2,12 @@
 
 All notable changes to `filament-country-field` will be documented in this file.
 
+## Add support for Laravel 11 - 2024-03-19
+
+Add support for Laravel 11
+
+**Full Changelog**: https://github.com/parfaitementweb/filament-country-field/compare/2.0.0...2.0.1
+
 ## 2.0.0 - 2024-01-16
 
 ### Changes
