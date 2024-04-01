@@ -17,6 +17,7 @@ class FilamentCountryFieldServiceProvider extends PackageServiceProvider
             ->hasCommand(ClearCacheCommand::class)
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command->askToStarRepoOnGitHub('parfaitementweb/filament-country-field');
-            });
+            })
+            ->hasViews('filament-country-field');
     }
 }

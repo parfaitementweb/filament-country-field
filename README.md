@@ -25,7 +25,7 @@ We have made things easy for you start. Here is the three steps your need to fol
 composer require parfaitementweb/filament-country-field
 ```
 
-2. **Add the Country field in your Filament Resource.**
+2. **Add the Country Form field in your Filament Resource.**
 
 ```php
 use Parfaitementweb\FilamentCountryField\Forms\Components\Country;
@@ -33,11 +33,19 @@ use Parfaitementweb\FilamentCountryField\Forms\Components\Country;
 Country::make('country')
 ```
 
+3. **Add the Country Column foeld in your Filament Resource.**
+
+```php
+use Parfaitementweb\FilamentCountryField\Tables\CountryColumn;
+
+CountryColumn::make('country')
+```
+
 3. **Enjoy.**
 
 ## Configuration
 
-On top of all **[Select Field](https://filamentphp.com/docs/3.x/forms/fields/select)** methods, you can use these three helpers:
+On top of all **[Select Field](https://filamentphp.com/docs/3.x/forms/fields/select)** methods, you can use these three helpers for the Form Component.
 
 - `exclude()` removes an item from the list.
 - `add()` adds your own value to the list.
