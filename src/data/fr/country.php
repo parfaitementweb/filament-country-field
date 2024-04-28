@@ -193,7 +193,6 @@ return [
     'GB' => 'Royaume-Uni',
     'RU' => 'Russie',
     'RW' => 'Rwanda',
-    'EH' => 'Sahara occidental',
     'BL' => 'Saint-Barthélemy',
     'KN' => 'Saint-Christophe-et-Niévès',
     'SM' => 'Saint-Marin',
