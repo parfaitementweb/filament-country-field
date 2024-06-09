@@ -2,16 +2,15 @@
 
 namespace Parfaitementweb\FilamentCountryField\Traits;
 
+use Exception;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 trait HasData
 {
     public function getLocale(): string
     {
-        $locale = app()->getLocale();
-        $localePrefix = explode('_', $locale)[0]; // Pega apenas a parte inicial do locale
-
-        return $localePrefix;
+        return Str::before(app()->getLocale(), '_');
     }
 
     public function getCountriesList(): array
@@ -21,19 +20,10 @@ trait HasData
 
     public function getList(): array
     {
-
-        $customPath = resource_path('custom/vendor/parfaitementweb/filament-country-field/src/data/' . $this->getLocale() . '/country.php');
-        $defaultPath = __DIR__ . '/../data/' . $this->getLocale() . '/country.php';
-
-        if (file_exists($customPath)) {
-            return require $customPath;
-        }
-
-        if  (file_exists($defaultPath)) {
-            return require $defaultPath;
-        } else {
+        try {
+            return require __DIR__ . '/../data/' . $this->getLocale() . '/country.php';
+        } catch (Exception $e) {
             return require __DIR__ . '/../data/en/country.php';
         }
-
     }
 }
