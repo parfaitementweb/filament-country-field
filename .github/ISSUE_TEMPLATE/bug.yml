@@ -1,6 +1,5 @@
 name: Bug Report
 description: Report an Issue or Bug with the Package
-title: ""
 labels: []
 body:
   - type: markdown
