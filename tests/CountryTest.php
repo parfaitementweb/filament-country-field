@@ -157,6 +157,22 @@ it('gets the data from the correct file in French', function () {
     expect($data)->toBe(require __DIR__ . '/../src/data/fr/country.php');
 });
 
+it('gets the english version is current locale does not exist', function () {
+    App::setLocale('unexistent');
+    $data = (new Country('country'))
+        ->getList();
+
+    expect($data)->toBe(require __DIR__ . '/../src/data/en/country.php');
+});
+
+it('gets the simplified version of the locale name', function () {
+    App::setLocale('fr_BE');
+    $data = (new Country('country'))
+        ->getList();
+
+    expect($data)->toBe(require __DIR__ . '/../src/data/fr/country.php');
+});
+
 it('caches the countries', function () {
     App::setLocale('en');
     $countryField = (new Country('country'))
