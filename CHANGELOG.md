@@ -2,6 +2,18 @@
 
 All notable changes to `filament-country-field` will be documented in this file.
 
+## 2.1.2 - 2024-06-09
+
+### What's Changed
+
+* Support for complex locale names. by @AlexisSerneels in https://github.com/parfaitementweb/filament-country-field/pull/11
+
+### New Contributors
+
+* @felipefcastro-okay made their first contribution in https://github.com/parfaitementweb/filament-country-field/pull/9
+
+**Full Changelog**: https://github.com/parfaitementweb/filament-country-field/compare/2.1.1...2.1.2
+
 ## 2.1.1 - 2024-06-09
 
 ### What's Changed
