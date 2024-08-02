@@ -192,3 +192,18 @@ it('clears the countries cache', function () {
 
     expect(Cache::get('filament-countries-field.en'))->toBeNull();
 });
+
+it('can handle an array of country codes', function () {
+    $mock = $this->partialMock(Country::class, function (MockInterface $mock) {
+        $mock->shouldReceive('getList')
+            ->once()
+            ->andReturn(['CA' => 'Canada', 'US' => 'United States', 'FR' => 'France']);
+    });
+
+    $countryColumn = new CountryColumn('countries');
+    $countryColumn->state(['CA', 'FR']);
+
+    $result = $countryColumn->nativeCountry();
+
+    expect($result)->toBe('Canada, France');
+});

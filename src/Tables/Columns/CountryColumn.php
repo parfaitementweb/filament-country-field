@@ -16,6 +16,19 @@ class CountryColumn extends Column
         $countries = $this->getCountriesList();
         $state = $this->getState();
 
+        if (is_array($state)) {
+            return $this->getMultipleCountries($state, $countries);
+        }
+
         return $countries[$state] ?? $state;
+    }
+
+    protected function getMultipleCountries(array $countryCodes, array $countries): string
+    {
+        $countryNames = array_map(function ($code) use ($countries) {
+            return $countries[$code] ?? $code;
+        }, $countryCodes);
+
+        return implode(', ', $countryNames);
     }
 }
