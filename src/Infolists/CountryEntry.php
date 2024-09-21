@@ -1,0 +1,27 @@
+<?php
+
+namespace Parfaitementweb\FilamentCountryField\Infolists;
+
+use Filament\Infolists\Components\TextEntry;
+use Parfaitementweb\FilamentCountryField\Tables\Columns\CountryColumn;
+use Parfaitementweb\FilamentCountryField\Traits\HasData;
+
+class CountryEntry extends TextEntry
+{
+    use HasData;
+
+    public function nativeCountry()
+    {
+        $countries = $this->getCountriesList();
+        $state = $this->getState();
+
+        return $countries[$state] ?? $state;
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->formatStateUsing(fn (): string => $this->nativeCountry());
+    }
+}
