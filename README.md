@@ -33,10 +33,10 @@ use Parfaitementweb\FilamentCountryField\Forms\Components\Country;
 Country::make('country')
 ```
 
-3. **Add the Country Column foeld in your Filament Resource.**
+3. **Add the Country Column field in your Filament Resource.**
 
 ```php
-use Parfaitementweb\FilamentCountryField\Tables\CountryColumn;
+use Parfaitementweb\FilamentCountryField\Tables\Columns\CountryColumn;
 
 CountryColumn::make('country')
 ```
