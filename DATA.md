@@ -249,7 +249,6 @@ return [
     'VE' => 'Venezuela',
     'VN' => 'Vietnam',
     'WF' => 'Wallis & Futuna',
-    'EH' => 'Western Sahara',
     'YE' => 'Yemen',
     'ZM' => 'Zambia',
     'ZW' => 'Zimbabwe',
