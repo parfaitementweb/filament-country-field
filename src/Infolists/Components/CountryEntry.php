@@ -3,7 +3,6 @@
 namespace Parfaitementweb\FilamentCountryField\Infolists\Components;
 
 use Filament\Infolists\Components\TextEntry;
-use Parfaitementweb\FilamentCountryField\Tables\Columns\CountryColumn;
 use Parfaitementweb\FilamentCountryField\Traits\HasData;
 
 class CountryEntry extends TextEntry
