@@ -1,6 +1,6 @@
 <?php
 
-namespace Parfaitementweb\FilamentCountryField\Infolists;
+namespace Parfaitementweb\FilamentCountryField\Infolists\Components;
 
 use Filament\Infolists\Components\TextEntry;
 use Parfaitementweb\FilamentCountryField\Tables\Columns\CountryColumn;
