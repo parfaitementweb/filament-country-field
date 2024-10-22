@@ -2,6 +2,19 @@
 
 All notable changes to `filament-country-field` will be documented in this file.
 
+## 2.2.0 - 2024-10-22
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/parfaitementweb/filament-country-field/pull/12
+* Add CountryEntry to Infolists by @agencetwogether in https://github.com/parfaitementweb/filament-country-field/pull/16
+
+### New Contributors
+
+* @agencetwogether made their first contribution in https://github.com/parfaitementweb/filament-country-field/pull/16
+
+**Full Changelog**: https://github.com/parfaitementweb/filament-country-field/compare/2.1.2...2.2.0
+
 ## 2.1.2 - 2024-06-09
 
 ### What's Changed
