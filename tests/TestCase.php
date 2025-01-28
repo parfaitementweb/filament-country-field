@@ -19,6 +19,7 @@ use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Parfaitementweb\FilamentCountryField\FilamentCountryFieldServiceProvider;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
+use Illuminate\Support\Facades\App;
 
 class TestCase extends Orchestra
 {
@@ -29,6 +30,8 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Parfaitementweb\\Country\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
+
+        App::setFallbackLocale('en');
     }
 
     protected function getPackageProviders($app)
