@@ -146,7 +146,7 @@ it('gets the data from the correct file in English', function () {
     $data = (new Country('country'))
         ->getList();
 
-    expect($data)->toBe(require __DIR__ . '/../src/data/en/country.php');
+    expect($data)->toBe(require __DIR__ . "/../resources/lang/en/country.php");
 });
 
 it('gets the data from the correct file in French', function () {
@@ -154,7 +154,7 @@ it('gets the data from the correct file in French', function () {
     $data = (new Country('country'))
         ->getList();
 
-    expect($data)->toBe(require __DIR__ . '/../src/data/fr/country.php');
+    expect($data)->toBe(require __DIR__ . '/../resources/lang/fr/country.php');
 });
 
 it('gets the english version is current locale does not exist', function () {
@@ -162,33 +162,15 @@ it('gets the english version is current locale does not exist', function () {
     $data = (new Country('country'))
         ->getList();
 
-    expect($data)->toBe(require __DIR__ . '/../src/data/en/country.php');
+    expect($data)->toBe(require __DIR__ . '/../resources/lang/en/country.php');
 });
 
 it('gets the simplified version of the locale name', function () {
     App::setLocale('fr_BE');
+
     $data = (new Country('country'))
         ->getList();
 
-    expect($data)->toBe(require __DIR__ . '/../src/data/fr/country.php');
+    expect($data)->toBe(require __DIR__ . '/../resources/lang/fr/country.php');
 });
 
-it('caches the countries', function () {
-    App::setLocale('en');
-    $countryField = (new Country('country'))
-        ->getOptions();
-
-    expect(Cache::get('filament-countries-field.en'))->toBe(require __DIR__ . '/../src/data/en/country.php');
-});
-
-it('clears the countries cache', function () {
-    App::setLocale('en');
-    $countryField = (new Country('country'))
-        ->getOptions();
-
-    expect(Cache::get('filament-countries-field.en'))->toBe(require __DIR__ . '/../src/data/en/country.php');
-
-    Artisan::call('countries-field:clear');
-
-    expect(Cache::get('filament-countries-field.en'))->toBeNull();
-});

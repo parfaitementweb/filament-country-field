@@ -14,10 +14,10 @@ class FilamentCountryFieldServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package->name(static::$name)
-            ->hasCommand(ClearCacheCommand::class)
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command->askToStarRepoOnGitHub('parfaitementweb/filament-country-field');
             })
-            ->hasViews('filament-country-field');
+            ->hasViews('filament-country-field')
+            ->hasTranslations();
     }
 }
